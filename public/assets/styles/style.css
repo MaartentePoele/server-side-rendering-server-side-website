@@ -1,0 +1,7 @@
+.visually-hidden {
+  display: none;
+}
+
+section {
+  border-top: 6px solid rgba(224, 176, 0, 1);
+}
