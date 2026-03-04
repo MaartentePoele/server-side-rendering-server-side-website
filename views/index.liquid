@@ -1,1 +1,37 @@
-Succes!
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milledoni</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+  </head>
+
+  <body>
+    {% include 'partials/header.liquid' %}
+
+    <main>
+      <h1>
+        Gifts for <span>{{ category.name }}</span>
+      </h1>
+
+      <img class="ribbon" src="" alt="">
+      <p>Be inspired by the world of Milledoni</p>
+      <button>Filter by v</button>
+
+      <section>
+        <h2 class="visually-hidden">Gifts</h2>
+
+        {% for product in products %}
+          <a href="">
+            <article>
+              <img class="product-image" src="{{ product.image }}" alt="">
+              <h3>{{ product.name }}</h3>
+            </article>
+          </a>
+        {% endfor %}
+
+      </section>
+    </main>
+  </body>
+</html>
