@@ -49,6 +49,14 @@ app.get("/", async function (request, response) {
   });
 });
 
+app.get("/:id", async function (request, response) {
+  response.render("gift.liquid");
+});
+
+app.get("/wishlist", async function (request, response) {
+  response.render("wishlist.liquid");
+});
+
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
 app.post("/", async function (request, response) {
