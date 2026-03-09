@@ -5,7 +5,7 @@ import express from "express";
 // Importeer de Liquid package (ook als dependency via npm geïnstalleerd)
 import { Liquid } from "liquidjs";
 
-console.log("Hieronder moet je waarschijnlijk nog wat veranderen");
+// console.log("Hieronder moet je waarschijnlijk nog wat veranderen");
 // Doe een fetch naar de data die je nodig hebt
 // const apiResponse = await fetch('...')
 
@@ -49,13 +49,24 @@ app.get("/", async function (request, response) {
   });
 });
 
-app.get("/:id", async function (request, response) {
-  response.render("gift.liquid");
+app.get("/:slug", async function (request, response) {
+  const productResponse = await fetch(
+    "https://fdnd-agency.directus.app/items/milledoni_products/?filter[slug]=" +
+      request.params.slug,
+  );
+  const productResponseJSON = await productResponse.json();
+  console.log(productResponseJSON);
+  // Check of er data wordt opgehaald
+  response.render("gift.liquid", {
+    product: productResponseJSON.data[0],
+  });
+  // Als er geen data wordt opgehaald
+  // response.status(404).render("error.liquid");
 });
 
-app.get("/wishlist", async function (request, response) {
-  response.render("wishlist.liquid");
-});
+// app.get("/wishlist", async function (request, response) {
+//   response.render("wishlist.liquid");
+// });
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt

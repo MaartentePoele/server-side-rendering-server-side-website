@@ -1,18 +1,7 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milledoni</title>
-    <link rel="stylesheet" href="assets/styles/style.css">
-  </head>
+    {% include 'partials/head.liquid' %}
 
-  <body>
-    {% include 'partials/header.liquid' %}
-
-    <main>
       <h2>
-        Gifts for <span>{{ category.name }}</span>
+        Gifts for <span></span>
       </h2>
 
       <svg width="76" height="45" viewBox="0 0 76 45" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,8 +13,9 @@
         <h3 class="visually-hidden">Gifts</h3>
         <p>Be inspired by the world of Milledoni</p>
 
+        {{ products.name }}
         {% for product in products %}
-          <a href="https://milledoni.com/nl/en/gift/{{ product.slug }}">
+          <a href="/{{ product.slug }}">
             <article>
               <img class="product-image" src="{{ product.image }}" alt="">
               <h4>{{ product.name }}</h4>

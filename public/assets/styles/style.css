@@ -2,18 +2,10 @@
   display: none;
 }
 
-section {
-  border-top: 6px solid rgba(224, 176, 0, 1);
+header {
+  padding: 2px 0px 0px 10px;
 }
 
-header {
-  
-  height: 60px;
-  width: 270px;
-  background-image: url("/assets/images/logo-medium.svg");
-  background-repeat: no-repeat;
-
-  @media (min-width: 650px) {
-    background-image: url("/assets/images/logo-large.svg");
-  }
+.logo {
+  height: 28px;
 }
