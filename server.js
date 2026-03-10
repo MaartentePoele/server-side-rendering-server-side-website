@@ -36,12 +36,22 @@ app.set("views", "./views");
 
 // Maak een GET route voor de index (meestal doe je dit in de root, als /)
 app.get("/", async function (request, response) {
+  const params = {};
+
+  if (request.query.price) {
+    params["filter[amount][_between]"] = "0," + request.query.price;
+  } else if (request.query.age) {
+    params["filter[tags][_contains]"] = "vanaf " + request.query.age + " jaar";
+  } else {
+    params["sort"] = "id";
+  }
+
   // Haalt alle producten op
   const productResponse = await fetch(
-    "https://fdnd-agency.directus.app/items/milledoni_products",
+    "https://fdnd-agency.directus.app/items/milledoni_products/?" +
+      new URLSearchParams(params),
   );
   const productResponseJSON = await productResponse.json();
-
   // Render index.liquid uit de Views map
   // Geef hier eventueel data aan mee
   response.render("index.liquid", {
@@ -49,13 +59,25 @@ app.get("/", async function (request, response) {
   });
 });
 
-app.get("/:slug", async function (request, response) {
+app.get("/category/:tags", async function (request, response) {
+  const productResponse = await fetch(
+    "https://fdnd-agency.directus.app/items/milledoni_products/?filter[tags][_contains]=" +
+      request.params.tags,
+  );
+  const productResponseJSON = await productResponse.json();
+
+  response.render("index.liquid", {
+    products: productResponseJSON.data,
+  });
+});
+
+app.get("/gift/:slug", async function (request, response) {
   const productResponse = await fetch(
     "https://fdnd-agency.directus.app/items/milledoni_products/?filter[slug]=" +
       request.params.slug,
   );
   const productResponseJSON = await productResponse.json();
-  console.log(productResponseJSON);
+  // console.log(productResponseJSON);
   // Check of er data wordt opgehaald
   response.render("gift.liquid", {
     product: productResponseJSON.data[0],
