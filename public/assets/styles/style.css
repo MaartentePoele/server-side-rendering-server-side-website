@@ -16,15 +16,7 @@ body {
   padding: 1rem;
 }
 
-header,
-aside,
-section,
-article,
-footer {
-  border: 1px solid black;
-}
-
-main {
+.home-main {
   display: flex;
 }
 
@@ -32,13 +24,9 @@ header {
   width: 100%;
 }
 
-aside {
-  height: 600px;
-}
-
 section {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   max-width: 950px;
   justify-content: flex-end;
@@ -49,7 +37,7 @@ section {
 }
 
 article {
-  width: 100%;
+  max-width: 300px;
   color: black;
 }
 

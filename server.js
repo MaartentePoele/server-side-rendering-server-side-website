@@ -36,6 +36,7 @@ app.set("views", "./views");
 
 // Maak een GET route voor de index (meestal doe je dit in de root, als /)
 app.get("/", async function (request, response) {
+  // Voeg fields toe om alleen de data op te halen die gebruikt wordt
   const params = {};
 
   if (request.query.price) {
