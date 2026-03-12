@@ -30,6 +30,7 @@ section {
   gap: 1rem;
   max-width: 950px;
   justify-content: flex-end;
+  margin-left: auto;
 
   a {
     text-decoration: none;
