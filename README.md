@@ -37,7 +37,7 @@ In mijn code gebruik ik een Liquid loop om alle cadeaus weer te geven op de pagi
 ```
 
 ### Partials
-Voor mijn website gebruik ik een partial voor de header en footer, zodat het op meerder pagina's gebruikt kan worden:
+Voor mijn website gebruik ik een partial voor de header en footer, zodat het op meerdere pagina's gebruikt kan worden:
 ```
 {% include 'partials/head.liquid' %}
 {% include 'partials/foot.liquid' %}
