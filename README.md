@@ -26,7 +26,7 @@ Check [hier](url) de website.
 ### Loops
 In mijn code gebruik ik een Liquid loop om alle cadeaus weer te geven op de pagina:
 ```
-{% for product in products %}
+  {% for product in products %}
     <a href="/gift/{{ product.slug }}">
       <article>
         <img class="product-image" src="{{ product.image }}" alt="">
